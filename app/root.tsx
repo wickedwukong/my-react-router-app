@@ -10,12 +10,21 @@ import type { Route } from "./+types/root";
 import { getContacts } from "./data";
 import appStylesHref from "./app.css?url";
 
+export function HydrateFallback() {
+  return (
+    <div id="loading-splash">
+      <div id="loading-splash-spinner" />
+      <p>Loading, please wait...</p>
+    </div>
+  );
+}
+
 export async function clientLoader() {
   const contacts = await getContacts();
   return { contacts };
 }
 
-export default function App({ loaderData }) {
+export default function App({ loaderData } : Route.ComponentProps) {
   const { contacts } = loaderData;
   return (
     <>

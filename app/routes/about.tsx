@@ -1,3 +1,4 @@
+import {useEffect, useState} from "react";
 import { Link } from "react-router";
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
             <div>
                 <p>
                     This is a demo application showing off some of the
-                    powerful features of React Router, including
+          §          powerful features of React Router, including
                     dynamic routing, nested routes, loaders, actions,
                     and more.
                 </p>

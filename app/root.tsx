@@ -19,6 +19,13 @@ export function HydrateFallback() {
   );
 }
 
+import { createEmptyContact } from "./data";
+
+export async function action() {
+    console.log("action is called")
+    const contact = await createEmptyContact();
+    return { contact };
+}
 
 export default function App() {
   return <Outlet />;

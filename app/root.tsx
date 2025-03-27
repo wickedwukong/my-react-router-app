@@ -1,13 +1,11 @@
 import {
-    Form,
     Scripts,
     ScrollRestoration,
     isRouteErrorResponse,
     Outlet,
-    Link, redirect
+    redirect
 } from "react-router";
 import type { Route } from "./+types/root";
-import { getContacts } from "./data";
 import appStylesHref from "./app.css?url";
 
 export function HydrateFallback() {

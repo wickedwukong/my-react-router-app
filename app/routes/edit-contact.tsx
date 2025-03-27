@@ -40,8 +40,7 @@ export default function EditContact({
                     placeholder="Last"
                     type="text"
                 />
-            </p>
-            <label>
+            </p>            <label>
                 <span>Twitter</span>
                 <input
                     defaultValue={contact.twitter}

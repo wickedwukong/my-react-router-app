@@ -1,18 +1,18 @@
-import {Form, Link, NavLink, Outlet} from "react-router";
-import { getContacts } from "../data";
-import type { Route } from "./+types/sidebar";
+import {Form, Link, NavLink, Outlet, useNavigation} from "react-router";
+import {getContacts} from "../data";
+import type {Route} from "./+types/sidebar";
 
 export async function loader() {
     const contacts = await getContacts();
-    return { contacts };
+    return {contacts};
 }
-
 
 
 export default function SidebarLayout({
                                           loaderData,
                                       }: Route.ComponentProps) {
-    const { contacts } = loaderData;
+    const {contacts} = loaderData;
+    const navigation = useNavigation();
 
     return (
         <>
@@ -45,7 +45,8 @@ export default function SidebarLayout({
                             {contacts.map((contact) => (
                                 <li key={contact.id}>
                                     <NavLink className={({isActive, isPending}) =>
-                                        isActive? "active" : isPending? "pending" : " "} to={`contacts/${contact.id}`}>
+                                        isActive ? "active" : isPending ? "pending" : " "}
+                                             to={`contacts/${contact.id}`}>
                                         {contact.first || contact.last ? (
                                             <>
                                                 {contact.first} {contact.last}
@@ -67,8 +68,8 @@ export default function SidebarLayout({
                     )}
                 </nav>
             </div>
-            <div id="detail">
-                <Outlet />
+            <div id="detail" className={navigation.state === "loading" ? "loading" : ""}>
+                <Outlet/>
             </div>
         </>
     );
